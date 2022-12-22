@@ -7,7 +7,7 @@ def index(request):
     items = list(Problem.objects.all())
     ran = random.choice(items)
     problem = ran.problem
-    options = ran.options.split()
+    options = ran.options.split("\n")
     random.shuffle(options)
     answer = ran.answer
 
