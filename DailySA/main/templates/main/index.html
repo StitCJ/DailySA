@@ -1,16 +1,12 @@
-<html>
-    <head>
-        <title>Problem!</title>
-    </head>
-    <body>
-        <form action= "{% url 'result' %}" method="get">
-            <p>{{problem}}</p>
-            <label><input type="radio" name="select" value="{{o1}}"> 1. {{o1}}</label> <br>
-            <label><input type="radio" name="select" value="{{o2}}"> 2. {{o2}}</label> <br>
-            <label><input type="radio" name="select" value="{{o3}}"> 3. {{o3}}</label> <br>
-            <label><input type="radio" name="select" value="{{o4}}"> 4. {{o4}}</label> <br>
-            <input type="hidden" name="answer" value="{{answer}}">
-            <input type="submit">
-        </form>
-    </body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+<form action= "{% url 'result' %}" method="get">
+    <p>{{problem}}</p>
+    <label><input type="radio" name="select" value="{{o1}}"> 1. {{o1}}</label> <br>
+    <label><input type="radio" name="select" value="{{o2}}"> 2. {{o2}}</label> <br>
+    <label><input type="radio" name="select" value="{{o3}}"> 3. {{o3}}</label> <br>
+    <label><input type="radio" name="select" value="{{o4}}"> 4. {{o4}}</label> <br>
+    <input type="hidden" name="answer" value="{{answer}}">
+    <input type="submit">
+</form>
+{% endblock %}
