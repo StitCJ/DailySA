@@ -3,7 +3,7 @@ FROM python:3
 WORKDIR /usr/src/app
 
 ## Install packages
-COPY . .
+COPY requirements.txt ./
 RUN pip install -r requirements.txt
 
 ## Copy all src files
@@ -14,4 +14,4 @@ EXPOSE 8000
 
 # gunicorn 배포 명령어
 # CMD ["gunicorn", "--bind", "허용하는 IP:열어줄 포트", "project.wsgi:application"]
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "stock.wsgi:application"]
+CMD ["nohup", "python3", "manage.py", "runserver", "0.0.0.0:8000", "&"]
