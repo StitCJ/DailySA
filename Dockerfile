@@ -14,4 +14,4 @@ EXPOSE 8000
 
 # gunicorn 배포 명령어
 # CMD ["gunicorn", "--bind", "허용하는 IP:열어줄 포트", "project.wsgi:application"]
-CMD ["nohup", "python3", "manage.py", "runserver", "0.0.0.0:8000", "&"]
+CMD ["nohup", "python3", "./DailySA/manage.py", "runserver", "0.0.0.0:8000", "&"]
