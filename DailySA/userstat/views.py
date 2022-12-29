@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Solved
 from main.models import Problem
+from django.contrib.auth.models import User
 
 # Create your views here.
 def mypage(request):
@@ -19,3 +20,15 @@ def mypage(request):
             npklst.append(i.pk)
             nn += 1
     return render(request, 'userstat/mypage.html', {'nsolved': n, 'pklst': pklst, 'nnsolved': nn, 'npklst': npklst})
+
+def ranking(request):
+    users = User.objects.all()
+    solutions = Solved.objects.all()
+    rank = {}
+    for user in users :
+        rank[user.username] = 0
+    for solution in solutions :
+        rank[solution.user_id.username] += 1
+    rank = dict(sorted(rank.items(), key=lambda x: x[1], reverse=True))    
+    rank = [rank]
+    return render(request, 'userstat/ranking.html', {'rank': rank})
