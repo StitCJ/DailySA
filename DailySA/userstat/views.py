@@ -6,8 +6,10 @@ from main.models import Problem
 def mypage(request):
     user = request.user
     user_solved = Solved.objects.filter(user_id=user)
-    print(user_solved[0].problem_id.pk)
     n = 0
+    pklst = []
     for i in user_solved :
+        pklst.append(i.problem_id.pk)
         n += 1
-    return render(request, 'userstat/mypage.html', {'solved': n})
+    print(pklst)
+    return render(request, 'userstat/mypage.html', {'nsolved': n, 'pklst': pklst})

@@ -5,8 +5,13 @@ from userstat.models import Solved
 
 # Create your views here.
 def index(request):
-    items = list(Problem.objects.all())
-    ran = random.choice(items)
+    parm = request.GET.get("pnum", "")
+    print(parm)
+    if parm == "" :
+        items = list(Problem.objects.all())
+        ran = random.choice(items)
+    else :
+        ran = Problem.objects.get(pk=parm)
     pnum = ran.pk
     problem = ran.problem
     options = ran.options.split("\n")

@@ -2,6 +2,14 @@
 {% block content %}
 <div class="container">
     <br>
-    내가 푼 문제 개수: {{ solved }}
+    내가 푼 문제 개수: {{ nsolved }}
+    <br>
+    <br>
+    <form action="{% url 'index' %}" method="get">
+    {% csrf_token %}
+    {% for i in pklst %}
+    <button type="submit" name="pnum" value="{{ i }}">{{ i }}</button>
+    {% endfor %}
+    </form>
 </div>
 {% endblock %}
