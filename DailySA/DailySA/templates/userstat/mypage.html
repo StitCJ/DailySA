@@ -11,5 +11,16 @@
     <button type="submit" name="pnum" value="{{ i }}">{{ i }}</button>
     {% endfor %}
     </form>
+
+    <br>
+    내가 풀지 않은 문제 개수: {{ nnsolved }}
+    <br>
+    <br>
+    <form action="{% url 'index' %}" method="get">
+    {% csrf_token %}
+    {% for i in npklst %}
+    <button type="submit" name="pnum" value="{{ i }}">{{ i }}</button>
+    {% endfor %}
+    </form>
 </div>
 {% endblock %}
