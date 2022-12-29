@@ -8,7 +8,7 @@
     <form action="{% url 'index' %}" method="get">
     {% csrf_token %}
     {% for i in pklst %}
-    <button class="btn btn-primary" type="submit" name="pnum" value="{{ i }}">{{ i }}</button>
+    <button class="btn btn-primary" type="submit" name="pnum" value="{{ i }}" style="margin-top: 10px">{{ i }}</button>
     {% endfor %}
     </form>
 
@@ -19,7 +19,7 @@
     <form action="{% url 'index' %}" method="get">
     {% csrf_token %}
     {% for i in npklst %}
-    <button class="btn btn-danger" type="submit" name="pnum" value="{{ i }}">{{ i }}</button>
+    <button class="btn btn-danger" type="submit" name="pnum" value="{{ i }}" style="margin-top: 10px">{{ i }}</button>
     {% endfor %}
     </form>
 </div>
