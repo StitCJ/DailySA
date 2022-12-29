@@ -15,7 +15,7 @@ def mypage(request):
     nn = 0
     npklst = []
     for i in problems :
-        if problems.pk  not in pklst :
-            npklst.append(i.problem_id.pk)
+        if i.pk  not in pklst :
+            npklst.append(i.pk)
             nn += 1
     return render(request, 'userstat/mypage.html', {'nsolved': n, 'pklst': pklst, 'nnsolved': nn, 'npklst': npklst})
