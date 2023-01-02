@@ -9,6 +9,7 @@
 <label>4. {{o4}}</label> <br>
 </div> <br>
 	정답: {{answer}} <br>
-	오답: {{select}} <br>
-<a href="{% url 'index' %}" >다른 문제</a>
+	오답: {{select}} <br><br>
+
+{% include 'result_footer.html' %}
 {% endblock %}

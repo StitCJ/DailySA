@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 <form action= "{% url 'result' %}" method="get">
-    <div class="container">
-        <br> <div clas="jumbotron"><b>NO.{{pnum}}</b> {{problem}}</div> <br>
+    <div class="container my-3">
+        <br>
+        <div clas="card my-3"><b>NO.{{pnum}}</b> {{problem}}</div> <br>
     <div class="list-group">
     <label><input class="form-check-input" type="radio" name="select" value="{{o1}}"> 1. {{o1}}</label> <br>
     <label><input class="form-check-input" type="radio" name="select" value="{{o2}}"> 2. {{o2}}</label> <br>

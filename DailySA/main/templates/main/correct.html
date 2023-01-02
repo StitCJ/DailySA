@@ -4,6 +4,9 @@
         <br>
         {{userpk}}
         정답입니다!
-        <a href="{% url 'index' %}">다른 문제</a>
+        <br>
+        <br>
+        {% include 'result_footer.html' %}
 </div>
+
 {% endblock %}

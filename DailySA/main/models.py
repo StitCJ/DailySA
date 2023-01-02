@@ -6,3 +6,8 @@ class Problem(models.Model):
     problem = models.TextField()
     options = models.TextField()
     answer = models.TextField()
+
+class Discussion(models.Model):
+    postname = models.CharField(max_length=200)
+    content = models.TextField()
+    problem_id = models.ForeignKey('Problem', on_delete=models.CASCADE)

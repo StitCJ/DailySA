@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    td {
+        vertical-align: middle;
+    }
+</style>
+<div class="container my-3">
+    <table class="table">
+        <thead>
+        <tr class="table-dark">
+            <th>번호</th>
+            <th>제목</th>
+            <th>문제 번호</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if discussions %}
+        {% for discussion in discussions %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>
+                <a href="{% url 'detail' discussion.pk %}">{{ discussion.postname }}</a>
+            </td>
+            <td>
+                <form action="{% url 'index' %}" method="get">
+                    {% csrf_token %}
+                <button class="btn btn-primary" type="submit" name="pnum" value="{{ discussion.problem_id.pk }}" style="margin-top: 10px">{{ discussion.problem_id.pk }}</button>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="3">질문이 없습니다.</td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

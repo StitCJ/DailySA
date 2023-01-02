@@ -1,0 +1,14 @@
+<style>
+	form {
+		display: inline;
+	}
+</style>
+<form action="{% url 'index' %}">
+	<input type="submit" value="다른문제" class="btn btn-primary">
+</form>
+{% if user.is_authenticated %}
+<form action="{% url 'new_post' %}">
+	<input type="hidden" name="pnum" value="{{pnum}}">
+	<input type="submit" value="질문하기" class="btn btn-danger">
+{% endif %}
+</form>

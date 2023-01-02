@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import random
-from .models import Problem
+from .models import Problem, Discussion
 from userstat.models import Solved
 
 # Create your views here.
@@ -43,3 +43,28 @@ def result(request):
         question = problem.problem
         options = problem.options.split("\n")
         return render(request, 'main/false.html', {'pnum': pnum, 'problem': question, 'o1': options[0], 'o2': options[1], 'o3': options[2], 'o4': options[3], 'answer': answer, 'select': select})
+
+def new_post(request):
+    if request.method == 'POST':
+        pnum = request.POST.get('pnum')
+        new_discussion=Discussion(
+            postname=request.POST.get('postname'),
+            content=request.POST.get('content'),
+            problem_id=Problem.objects.get(pk=pnum)
+            )
+        new_discussion.save()
+        return render(request,'main/index.html')
+    else :
+        pnum = request.GET['pnum']
+    return render(request, 'main/new_post.html', {'pnum': pnum})
+
+def discussion(request):
+    discussions = Discussion.objects.all()
+    return render(request, 'main/discussion.html', {'discussions': discussions})
+
+def detail(request, discussion_id):
+    discussion = Discussion.objects.get(pk=discussion_id)
+    postname = discussion.postname
+    content = discussion.content
+    problem_id = discussion.problem_id.pk
+    return render(request, 'main/detail.html', {'postname': postname, 'content': content, 'problem_id': problem_id})
