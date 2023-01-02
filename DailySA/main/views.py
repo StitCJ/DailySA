@@ -53,7 +53,7 @@ def new_post(request):
             problem_id=Problem.objects.get(pk=pnum)
             )
         new_discussion.save()
-        return render(request,'main/index.html')
+        return redirect('discussion')
     else :
         pnum = request.GET['pnum']
     return render(request, 'main/new_post.html', {'pnum': pnum})
